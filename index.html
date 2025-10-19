@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8" />
     <title>Intro SE331</title>
@@ -12,10 +13,25 @@
 
 <body>
     <div id="app">
-        <h1>Product goes here</h1>
+        <div class="nav-bar"></div>
+        <div class="cart">
+            <div>Cart: {{ cartTotal }} items</div>
+            <div v-if="cart.length > 0" class="cart-items">
+                <div v-for="(count, id) in cartItemCounts" :key="id">
+                    Product {{ id }}: {{ count }}
+                </div>
+            </div>
+        </div>
+        <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeFromCart"></product-display>
     </div>
 
     <!-- Import Js -->
+     
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
+
     <script src="./main.js"></script>
 </body>
 
